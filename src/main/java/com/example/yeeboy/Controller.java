@@ -9,7 +9,6 @@ import com.example.yeeboy.dto.DTOMovie;
 import com.example.yeeboy.dto.DTOPerson;
 import com.example.yeeboy.repository.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,7 +44,9 @@ public class Controller {
     public Person convertDto(DTOPerson dtoPerson){
         Person person = new Person();
         person.setFullName(dtoPerson.getFullName());
-        person.setBirthday(Date.valueOf(dtoPerson.getBirthDate()));
+        if(dtoPerson.getBirthDate() != null){
+            person.setBirthday(Date.valueOf(dtoPerson.getBirthDate()));
+        }
         person.setBirthPlace(dtoPerson.getBirthPlace());
         person.setDeathCause(dtoPerson.getDeathCause());
         person.setDeathDate(Date.valueOf(dtoPerson.getDeathDate()));
