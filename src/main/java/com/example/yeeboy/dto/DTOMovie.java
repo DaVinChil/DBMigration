@@ -16,7 +16,7 @@ public class DTOMovie {
     private List<String> writers = new ArrayList<>();
     private String description;
 
-    static class Actor {
+    public static class Actor {
         private String fullName;
         private String id;
         private List<String> characters;

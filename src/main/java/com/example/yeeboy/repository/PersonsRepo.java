@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PersonsRepo extends JpaRepository<Person, Long> {
-
+    Person findByImdbId(String imdbId);
 }
