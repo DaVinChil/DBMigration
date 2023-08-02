@@ -5,16 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Embeddable
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "image_id")
     private long id;
+
+    @Column(name = "height")
     private int height;
-    private String url;
+
+    @Column(name = "width")
     private int width;
+
+    @Column(name = "url")
+    private String url;
 }
