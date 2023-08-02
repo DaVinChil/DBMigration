@@ -22,7 +22,7 @@ public class Genre {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "Movie_Genre",
+            name = "movie_genre",
             joinColumns = @JoinColumn(name = "genre_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_genre")
     )

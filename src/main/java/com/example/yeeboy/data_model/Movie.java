@@ -40,7 +40,7 @@ public class Movie {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "Movie_Director",
+            name = "movie_director",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id")
     )
@@ -48,7 +48,7 @@ public class Movie {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "Movie_Writer",
+            name = "movie_writer",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id")
     )
@@ -56,7 +56,7 @@ public class Movie {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "Movie_Actor",
+            name = "movie_actor",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id")
     )
