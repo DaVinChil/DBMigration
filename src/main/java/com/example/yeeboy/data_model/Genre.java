@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "genre")
+@Table(name = "Genre")
 @NoArgsConstructor
 @Data
 public class Genre {
@@ -22,7 +22,7 @@ public class Genre {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "movie_genre",
+            name = "Movie_Genre",
             joinColumns = @JoinColumn(name = "genre_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_genre")
     )

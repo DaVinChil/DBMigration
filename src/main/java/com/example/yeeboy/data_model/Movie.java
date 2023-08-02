@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "movie")
+@Table(name = "Movie")
 public class Movie {
 
     @Id
@@ -40,7 +40,7 @@ public class Movie {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "movie_director",
+            name = "Movie_Director",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id")
     )
@@ -48,7 +48,7 @@ public class Movie {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "movie_writer",
+            name = "Movie_Writer",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id")
     )
@@ -56,7 +56,7 @@ public class Movie {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "movie_actor",
+            name = "Movie_Actor",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id")
     )
