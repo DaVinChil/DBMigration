@@ -19,7 +19,7 @@ public class Person {
     @Column(name = "person_id")
     private long id;
 
-    @Column
+    @Column(name = "imdb_id")
     private String imdbId;
 
     @Column(name = "full_name")
@@ -51,7 +51,7 @@ public class Person {
     @JoinColumn(name = "photo_id", referencedColumnName = "image_id")
     private Image photo;
 
-    @OneToMany(mappedBy = "actor", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "actor")
     private List<Character> characters;
 
     @ManyToMany(mappedBy = "actors")

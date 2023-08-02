@@ -8,6 +8,7 @@ create table Person(
        death_cause varchar(255),
        death_date date,
        photo_id long,
+	imdb_id varchar(20)
        foreign key(photo_id) references Image(image_id) on delete cascade
 );
 
@@ -18,6 +19,7 @@ create table Movie(
       running_time_in_minutes int,
       chart_rating double,
       year int,
+	imdb_id varchar(20)
       image_id long,
       foreign key(image_id) references Image(image_id) on delete cascade
 );

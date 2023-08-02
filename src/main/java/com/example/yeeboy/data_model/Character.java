@@ -18,11 +18,11 @@ public class Character {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "movie_id", referencedColumnName = "movie_id")
     private Movie movie;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "actor_id", referencedColumnName = "person_id")
     private Person actor;
 }

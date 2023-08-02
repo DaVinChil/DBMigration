@@ -3,7 +3,6 @@ package com.example.yeeboy.data_model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +62,7 @@ public class Movie {
     )
     private List<Person> actors;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "movie")
     private List<Character> characters;
 
     @ManyToMany(mappedBy = "movies")

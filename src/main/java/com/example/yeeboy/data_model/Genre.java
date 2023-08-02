@@ -20,7 +20,7 @@ public class Genre {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "Movie_Genre",
             joinColumns = @JoinColumn(name = "genre_id"),
