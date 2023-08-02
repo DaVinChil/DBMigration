@@ -74,4 +74,35 @@ public class Movie {
         }
         genres.add(genre);
     }
+    public void addCharacter(Character ch){
+        if(characters == null){
+            characters = new ArrayList<>();
+        }
+
+        characters.add(ch);
+    }
+
+    public void addActor(Person person){
+        if(actors == null){
+            actors = new ArrayList<>();
+        }
+
+        actors.add(person);
+    }
+
+    public void addDirector(Person person){
+        if(directors == null){
+            directors = new ArrayList<>();
+        }
+
+        directors.add(person);
+    }
+
+    public void addWriter(Person person){
+        if(writers == null){
+            writers = new ArrayList<>();
+        }
+
+        writers.add(person);
+    }
 }

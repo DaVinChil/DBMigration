@@ -1,6 +1,8 @@
 package com.example.yeeboy;
 
+import com.example.yeeboy.data_model.Character;
 import com.example.yeeboy.data_model.Genre;
+import com.example.yeeboy.data_model.Image;
 import com.example.yeeboy.data_model.Movie;
 import com.example.yeeboy.data_model.Person;
 import com.example.yeeboy.dto.DTOMovie;
@@ -25,13 +27,19 @@ public class Controller {
     private final CharacterRepo characters;
 
     @PostMapping("/person")
-    public ResponseEntity<Void> postPerson(@RequestBody List<DTOPerson> dtoPerson) {
-
+    public void postPerson(@RequestBody List<DTOPerson> dtoPersons) {
+        for(DTOPerson person : dtoPersons){
+            Person pers = convertDto(person);
+            persons.save(pers);
+        }
     }
 
     @PostMapping("/movie")
-    public ResponseEntity<Void> postMovie(@RequestBody DTOMovie dtoMovie){
-
+    public void postMovie(@RequestBody List<DTOMovie> dtoMovies){
+        for(DTOMovie dtoMovie : dtoMovies) {
+            Movie movie = convertDto(dtoMovie);
+            movies.save(movie);
+        }
     }
 
     public Person convertDto(DTOPerson dtoPerson){
@@ -44,10 +52,10 @@ public class Controller {
         person.setDeathPlace(dtoPerson.getDeathPlace());
         person.setHeight(dtoPerson.getHeight());
         person.setGender(dtoPerson.getGender());
-        persons.save(person);
+        return person;
     }
 
-    public Movie covertDto(DTOMovie dtoMovie){
+    public Movie convertDto(DTOMovie dtoMovie){
         Movie movie = new Movie();
         movie.setTitle(dtoMovie.getTitle());
         movie.setChartRating(dtoMovie.getChartRating());
@@ -64,5 +72,36 @@ public class Controller {
         movie.setYear((int) dtoMovie.getYear());
         movie.setRunningTimeInMinutes((int) dtoMovie.getRunningTimeInMinutes());
 
+        Image image = new Image();
+        image.setHeight(image.getHeight());
+        image.setWidth(image.getWidth());
+        image.setUrl(image.getUrl());
+        images.save(image);
+
+        for(DTOMovie.Actor actor : dtoMovie.getActors()) {
+            Person person = persons.findByImdbId(actor.getId());
+            movie.addActor(person);
+            for(String character : actor.getCharacters()){
+                Character c = new Character();
+                c.setName(character);
+                movie.addCharacter(c);
+                person.addCharacter(c);
+                c.setActor(person);
+                c.setMovie(movie);
+            }
+        }
+
+        for(String director : dtoMovie.getDirectors()){
+            Person person = persons.findByImdbId(director);
+            movie.addDirector(person);
+        }
+
+        for(String writer : dtoMovie.getWriters()) {
+            Person person = persons.findByImdbId(writer);
+            movie.addWriter(person);
+        }
+
+        movie.setDescription(dtoMovie.getDescription());
+        return movie;
     }
 }

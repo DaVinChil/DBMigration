@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -57,5 +58,11 @@ public class Person {
     @ManyToMany(mappedBy = "actors")
     private List<Movie> filmography;
 
-    public void addMovie()
+    public void addCharacter(Character ch){
+        if(characters == null){
+            characters = new ArrayList<>();
+        }
+
+        characters.add(ch);
+    }
 }
