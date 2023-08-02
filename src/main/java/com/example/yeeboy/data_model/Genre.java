@@ -4,10 +4,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Genre")
+@Table(name = "Genres")
 @NoArgsConstructor
 @Data
 public class Genre {
@@ -22,9 +23,17 @@ public class Genre {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "Movie_Genre",
+            name = "movies_genres",
             joinColumns = @JoinColumn(name = "genre_id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_genre")
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
     )
     private List<Movie> movies;
+
+    public void addMovie(Movie movie){
+        if(movies == null){
+            movies = new ArrayList<>();
+        }
+
+        movies.add(movie);
+    }
 }

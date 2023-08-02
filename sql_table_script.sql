@@ -1,18 +1,18 @@
-create table Genre
+create table genres
 (
     genre_id int primary key auto_increment not null,
     name     varchar(255)                   not null
 );
 
-create table Image
+create table images
 (
     image_id  int primary key auto_increment not null,
     height    int                            not null,
     width     int                            not null,
-    image_url text
+    url text
 );
 
-create table Person
+create table persons
 (
     person_id   int primary key auto_increment not null,
     full_name   varchar(255)                   not null,
@@ -21,13 +21,14 @@ create table Person
     birthday    date,
     birth_place varchar(255),
     death_cause varchar(255),
+    death_place varchar(255),
     death_date  date,
     photo_id    int,
     imdb_id     varchar(20),
-    foreign key (photo_id) references Image (image_id) on delete cascade
+    foreign key (photo_id) references images (image_id) on delete cascade
 );
 
-create table Movie
+create table movies
 (
     movie_id                int primary key auto_increment not null,
     title                   varchar(200)                   not null,
@@ -37,43 +38,43 @@ create table Movie
     year                    int,
     imdb_id                 varchar(20),
     image_id                int,
-    foreign key (image_id) references Image (image_id) on delete cascade
+    foreign key (image_id) references images (image_id) on delete cascade
 );
 
 
-create table `Character`
+create table characters
 (
     character_id int primary key auto_increment not null,
     name         varchar(255)                   not null,
     movie_id     int                            not null,
     actor_id     int                            not null,
-    foreign key (movie_id) references Movie (movie_id) on delete cascade,
-    foreign key (actor_id) references Person (person_id) on delete cascade
+    foreign key (movie_id) references movies (movie_id),
+    foreign key (actor_id) references persons (person_id)
 );
 
 
-create table Movie_Writer
+create table movies_writers
 (
     movie_id  int not null,
     person_id int not null,
     primary key (movie_id, person_id)
 );
 
-create table Movie_Director
+create table movies_directors
 (
     movie_id  int not null,
     person_id int not null,
     primary key (movie_id, person_id)
 );
 
-create table Movie_Genre
+create table movies_genres
 (
     movie_id int not null,
     genre_id int not null,
     primary key (movie_id, genre_id)
 );
 
-create table Movie_Actor
+create table movies_actors
 (
     movie_id  int not null,
     person_id int not null,

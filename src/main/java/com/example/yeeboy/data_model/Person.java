@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "Person")
+@Table(name = "Persons")
 public class Person {
 
     @Id
@@ -52,10 +52,10 @@ public class Person {
     @JoinColumn(name = "photo_id", referencedColumnName = "image_id")
     private Image photo;
 
-    @OneToMany(mappedBy = "actor")
+    @OneToMany(mappedBy = "actor", cascade = CascadeType.PERSIST)
     private List<Character> characters;
 
-    @ManyToMany(mappedBy = "actors")
+    @ManyToMany(mappedBy = "actors", cascade = CascadeType.PERSIST)
     private List<Movie> filmography;
 
     public void addCharacter(Character ch){
