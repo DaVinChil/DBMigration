@@ -1,9 +1,10 @@
-package com.example.yeeboy.model;
+package com.example.yeeboy.data_model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -16,6 +17,9 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "movie_id")
     private long id;
+
+    @Column(name = "imdb_id")
+    private String imdbId;
 
     @Column(name = "title")
     private String title;
@@ -61,4 +65,14 @@ public class Movie {
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.PERSIST)
     private List<Character> characters;
+
+    @ManyToMany(mappedBy = "movies")
+    private List<Genre> genres;
+
+    public void addGenre(Genre genre) {
+        if(genres == null){
+            genres = new ArrayList<>();
+        }
+        genres.add(genre);
+    }
 }

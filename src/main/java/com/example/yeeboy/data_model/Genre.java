@@ -1,4 +1,4 @@
-package com.example.yeeboy.model;
+package com.example.yeeboy.data_model;
 
 import jakarta.persistence.*;
 import lombok.Data;

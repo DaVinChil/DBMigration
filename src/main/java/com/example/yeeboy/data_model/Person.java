@@ -1,10 +1,10 @@
-package com.example.yeeboy.model;
+package com.example.yeeboy.data_model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,6 +18,9 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
     private long id;
+
+    @Column
+    private String imdbId;
 
     @Column(name = "full_name")
     private String fullName;
@@ -41,6 +44,9 @@ public class Person {
     @Column(name = "death_cause")
     private String deathCause;
 
+    @Column(name = "death_place")
+    private String deathPlace;
+
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "photo_id", referencedColumnName = "image_id")
     private Image photo;
@@ -50,4 +56,6 @@ public class Person {
 
     @ManyToMany(mappedBy = "actors")
     private List<Movie> filmography;
+
+    public void addMovie()
 }
