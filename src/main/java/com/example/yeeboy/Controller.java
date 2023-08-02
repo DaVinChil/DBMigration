@@ -47,12 +47,22 @@ public class Controller {
         if(dtoPerson.getBirthDate() != null){
             person.setBirthday(Date.valueOf(dtoPerson.getBirthDate()));
         }
-        person.setBirthPlace(dtoPerson.getBirthPlace());
-        person.setDeathCause(dtoPerson.getDeathCause());
-        person.setDeathDate(Date.valueOf(dtoPerson.getDeathDate()));
-        person.setDeathPlace(dtoPerson.getDeathPlace());
+        if(dtoPerson.getBirthPlace() != null) {
+            person.setBirthPlace(dtoPerson.getBirthPlace());
+        }
+        if(dtoPerson.getDeathCause() != null) {
+            person.setDeathCause(dtoPerson.getDeathCause());
+        }
+        if(dtoPerson.getDeathDate() != null){
+            person.setDeathDate(Date.valueOf(dtoPerson.getDeathDate()));
+        }
+        if(dtoPerson.getDeathPlace() != null) {
+            person.setDeathPlace(dtoPerson.getDeathPlace());
+        }
         person.setHeight(dtoPerson.getHeight());
-        person.setGender(dtoPerson.getGender());
+        if(dtoPerson.getGender() != null){
+            person.setGender(dtoPerson.getGender());
+        }
         return person;
     }
 
