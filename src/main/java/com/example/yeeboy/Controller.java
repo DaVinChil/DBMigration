@@ -16,13 +16,13 @@ public class Controller {
     private final PersonsRepo persons;
     private final MovieRepo movies;
 
-    @PostMapping("/person")
-    public ResponseEntity<Void> postPerson(@RequestBody List<Person> person) {
-
-    }
-
-    @PostMapping("/movie")
-    public ResponseEntity<Void> postMovie(@RequestBody Movie movie){
-
-    }
+//    @PostMapping("/person")
+//    public ResponseEntity<Void> postPerson(@RequestBody List<Person> person) {
+//
+//    }
+//
+//    @PostMapping("/movie")
+//    public ResponseEntity<Void> postMovie(@RequestBody Movie movie){
+//
+//    }
 }

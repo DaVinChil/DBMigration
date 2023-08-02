@@ -19,7 +19,8 @@ public class Movie {
     private String title;
     private double chartRating;
     private long year;
-    private long imageId;
-    private ArrayList<Genre> genre;
-    private Photo image;
+    @OneToMany
+    private List<Genre> genre;
+    @OneToOne
+    private Image image;
 }

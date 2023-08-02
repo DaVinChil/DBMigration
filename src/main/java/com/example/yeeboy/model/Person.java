@@ -26,6 +26,6 @@ public class Person {
     private String fullName;
     private String gender;
     private double height;
-    @Embedded
-    private Photo photo;
+    @OneToOne
+    private Image photo;
 }
